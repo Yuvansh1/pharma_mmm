@@ -11,7 +11,6 @@ Endpoints:
   GET  /recommend     LLM budget recommendation
 """
 
-import numpy as np
 import pandas as pd
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
