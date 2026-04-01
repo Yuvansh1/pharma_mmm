@@ -24,7 +24,7 @@ jobs:
         run: pip install flake8 black isort
 
       - name: flake8
-        run: flake8 src/ main.py --max-line-length=100 --ignore=E501,W503
+        run: flake8 src/ main.py --max-line-length=100 --ignore=E501,W503,W504
 
       - name: black
         run: black --check src/ main.py
