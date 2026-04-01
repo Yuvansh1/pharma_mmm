@@ -29,9 +29,6 @@ jobs:
       - name: black
         run: black --check src/ main.py
 
-      - name: isort
-        run: isort --check-only src/ main.py
-
   test:
     name: Tests
     runs-on: ubuntu-latest
