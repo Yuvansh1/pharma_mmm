@@ -1,4 +1,4 @@
-# pharma_mmm
+# Pharma Marketing Mix Model (MMM)
 
 [![CI](https://github.com/Yuvansh1/pharma_mmm/actions/workflows/ci.yml/badge.svg)](https://github.com/Yuvansh1/pharma_mmm/actions)
 
