@@ -28,7 +28,12 @@ def generate_mmm_data(n_weeks: int = 156) -> pd.DataFrame:
     dates = pd.date_range(start="2022-01-03", periods=n_weeks, freq="W-MON")
     week_of_year = np.array([d.isocalendar()[1] for d in dates])
 
-    flu_season = np.where((week_of_year >= 40) | (week_of_year <= 8), 1.2, 1.0)
+    flu_season = np.where(
+        (week_of_year >= 40)
+        | (week_of_year <= 8),
+        1.2,
+        1.0,
+    )
     conference_season = np.where(
         ((week_of_year >= 18) & (week_of_year <= 22)) |
         ((week_of_year >= 36) & (week_of_year <= 39)),
