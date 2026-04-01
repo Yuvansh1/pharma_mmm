@@ -108,14 +108,14 @@ def train():
 
 @app.get("/elasticities")
 def elasticities():
-    if _model is None:
+    if _model is None or _model.model is None:
         raise HTTPException(400, "Model not trained. Call POST /train first.")
     return _model.get_elasticities()
 
 
 @app.get("/roi")
 def roi():
-    if _model is None:
+    if _model is None or _model.model is None:
         raise HTTPException(400, "Model not trained. Call POST /train first.")
     contributions = _model.get_contributions(_X_test, _y_test)
     return _model.compute_roi(contributions, CHANNEL_COSTS)
@@ -123,7 +123,7 @@ def roi():
 
 @app.post("/simulate")
 def simulate(request: ScenarioRequest):
-    if _model is None:
+    if _model is None or _model.model is None:
         raise HTTPException(400, "Model not trained. Call POST /train first.")
     result = _model.simulate_scenario(_X_test, request.adjustments)
     result["description"] = request.description
@@ -133,7 +133,7 @@ def simulate(request: ScenarioRequest):
 
 @app.get("/insights")
 def insights():
-    if _model is None:
+    if _model is None or _model.model is None:
         raise HTTPException(400, "Model not trained. Call POST /train first.")
     elast = _model.get_elasticities()
     metrics = _model.evaluate(_X_test, _y_test)
@@ -146,7 +146,7 @@ def insights():
 
 @app.get("/recommend")
 def recommend():
-    if _model is None:
+    if _model is None or _model.model is None:
         raise HTTPException(400, "Model not trained. Call POST /train first.")
     contributions = _model.get_contributions(_X_test, _y_test)
     roi_scores = _model.compute_roi(contributions, CHANNEL_COSTS)

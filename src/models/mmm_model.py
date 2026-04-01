@@ -49,10 +49,8 @@ class MarketingMixModel:
         return self.model.predict(X_const)
 
     def get_elasticities(self) -> dict:
-        """
-        In a log-log model, coefficients ARE elasticities:
-        1% increase in channel X -> beta% change in Rx claims.
-        """
+        if self.model is None:
+            raise ValueError("Model not fitted yet. Call fit() first.")
         params = self.model.params
         elasticities = {}
         for feat in self.feature_names:
