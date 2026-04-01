@@ -7,3 +7,5 @@ statsmodels
 pydantic
 python-dotenv
 google-generativeai
+streamlit
+requests
