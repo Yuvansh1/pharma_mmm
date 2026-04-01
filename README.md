@@ -1,6 +1,6 @@
 # Pharma Marketing Mix Model (MMM) with LLM Insights
 
-[![CI](https://github.com/Yuvansh1/pharma-mmm/actions/workflows/ci.yml/badge.svg)](https://github.com/Yuvansh1/pharma-mmm/actions)
+[![CI](https://github.com/Yuvansh1/pharma_mmm/actions/workflows/ci.yml/badge.svg)](https://github.com/Yuvansh1/pharma_mmm/actions)
 
 An end-to-end Marketing Mix Modeling pipeline for pharmaceutical brands, combining classical statistical regression with an LLM-powered agent (Google Gemini) to measure channel effectiveness, compute ROI, and generate actionable business insights — all served via a FastAPI REST API.
 
