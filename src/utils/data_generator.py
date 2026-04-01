@@ -5,9 +5,10 @@ Generates realistic weekly pharma marketing and Rx claims data
 for model training and demonstration. Outputs 3 years (156 weeks) by default.
 """
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
 
 np.random.seed(42)
 

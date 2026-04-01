@@ -5,11 +5,12 @@ Fits OLS regression with log-transformed variables.
 Computes channel elasticities, contribution decomposition, and ROI.
 """
 
+from dataclasses import dataclass, field
+
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from dataclasses import dataclass, field
 
 
 @dataclass

@@ -8,8 +8,9 @@ Uses Google Gemini to generate human-readable interpretations of:
 - Anomaly explanations
 """
 
-import os
 import json
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()

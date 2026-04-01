@@ -11,16 +11,18 @@ Endpoints:
   GET  /recommend     LLM budget recommendation
 """
 
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from dotenv import load_dotenv
 
-from src.utils.data_generator import generate_mmm_data
-from src.utils.preprocessing import build_feature_matrix, train_test_split_temporal
-from src.models.mmm_model import MarketingMixModel
 from src.agents.llm_agent import MMMLLMAgent
+from src.models.mmm_model import MarketingMixModel
+from src.utils.data_generator import generate_mmm_data
+from src.utils.preprocessing import (build_feature_matrix,
+                                     train_test_split_temporal)
 
 load_dotenv()
 
