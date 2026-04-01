@@ -57,9 +57,7 @@ def add_lag_features(df: pd.DataFrame) -> pd.DataFrame:
     return df.dropna().reset_index(drop=True)
 
 
-def train_test_split_temporal(
-    df: pd.DataFrame, test_weeks: int = 20
-) -> tuple:
+def train_test_split_temporal(df: pd.DataFrame, test_weeks: int = 20) -> tuple:
     """Temporal split — last N weeks held out as test set."""
     return df.iloc[:-test_weeks].copy(), df.iloc[-test_weeks:].copy()
 

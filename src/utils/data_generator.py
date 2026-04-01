@@ -29,15 +29,15 @@ def generate_mmm_data(n_weeks: int = 156) -> pd.DataFrame:
     week_of_year = np.array([d.isocalendar()[1] for d in dates])
 
     flu_season = np.where(
-        (week_of_year >= 40)
-        | (week_of_year <= 8),
+        (week_of_year >= 40) | (week_of_year <= 8),
         1.2,
         1.0,
     )
     conference_season = np.where(
-        ((week_of_year >= 18) & (week_of_year <= 22)) |
-        ((week_of_year >= 36) & (week_of_year <= 39)),
-        1.1, 1.0
+        ((week_of_year >= 18) & (week_of_year <= 22))
+        | ((week_of_year >= 36) & (week_of_year <= 39)),
+        1.1,
+        1.0,
     )
     seasonality = flu_season * conference_season
 
@@ -45,7 +45,9 @@ def generate_mmm_data(n_weeks: int = 156) -> pd.DataFrame:
         (np.random.poisson(lam=55, size=n_weeks) * seasonality).astype(int), 10, 120
     )
     speaker_programs = np.clip(np.random.poisson(lam=3, size=n_weeks), 0, 10)
-    samples = np.clip((rep_visits * np.random.uniform(3.5, 5.5, n_weeks)).astype(int), 50, 600)
+    samples = np.clip(
+        (rep_visits * np.random.uniform(3.5, 5.5, n_weeks)).astype(int), 50, 600
+    )
     emails_sent = np.random.randint(600, 1400, size=n_weeks)
     ad_clicks = np.random.randint(200, 700, size=n_weeks)
 
@@ -77,17 +79,19 @@ def generate_mmm_data(n_weeks: int = 156) -> pd.DataFrame:
         else:
             events.append("None")
 
-    return pd.DataFrame({
-        "week": dates,
-        "rx_claims": rx_claims,
-        "rep_visits": rep_visits,
-        "speaker_programs": speaker_programs,
-        "samples_distributed": samples,
-        "emails_sent": emails_sent,
-        "ad_clicks": ad_clicks,
-        "seasonality_index": seasonality.round(3),
-        "event": events,
-    })
+    return pd.DataFrame(
+        {
+            "week": dates,
+            "rx_claims": rx_claims,
+            "rep_visits": rep_visits,
+            "speaker_programs": speaker_programs,
+            "samples_distributed": samples,
+            "emails_sent": emails_sent,
+            "ad_clicks": ad_clicks,
+            "seasonality_index": seasonality.round(3),
+            "event": events,
+        }
+    )
 
 
 if __name__ == "__main__":

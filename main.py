@@ -68,7 +68,9 @@ def train():
         df = pd.read_csv(DATA_PATH, parse_dates=["week"])
 
     X, y = build_feature_matrix(df)
-    train_df, test_df = train_test_split_temporal(pd.concat([X, y], axis=1), test_weeks=20)
+    train_df, test_df = train_test_split_temporal(
+        pd.concat([X, y], axis=1), test_weeks=20
+    )
 
     y_col = y.name
     X_train = train_df.drop(columns=[y_col])
@@ -84,7 +86,11 @@ def train():
     elasticities = _model.get_elasticities()
 
     top_channels = sorted(
-        [(k, v) for k, v in elasticities.items() if "log_" in k and "seasonality" not in k],
+        [
+            (k, v)
+            for k, v in elasticities.items()
+            if "log_" in k and "seasonality" not in k
+        ],
         key=lambda x: abs(x[1]),
         reverse=True,
     )
